@@ -1,0 +1,152 @@
+### API Testing File for VS Code REST Client Extension
+### Install the "REST Client" extension to use this file
+
+@baseUrl = http://localhost:5000
+@contentType = application/json
+
+### Health Check
+GET {{baseUrl}}/api/health
+
+### Root Endpoint
+GET {{baseUrl}}/
+
+### Test 1: Signup - Valid User
+POST {{baseUrl}}/api/auth/signup
+Content-Type: {{contentType}}
+
+{
+  "firstName": "John",
+  "lastName": "Doe",
+  "email": "john.doe@example.com",
+  "company": "Test Company",
+  "industry": "pharmaceutical",
+  "password": "SecurePass123!",
+  "agreedToTerms": true
+}
+
+### Test 2: Signup - Duplicate Email (Should Fail)
+POST {{baseUrl}}/api/auth/signup
+Content-Type: {{contentType}}
+
+{
+  "firstName": "Jane",
+  "lastName": "Doe",
+  "email": "john.doe@example.com",
+  "company": "Another Company",
+  "industry": "biotechnology",
+  "password": "AnotherPass123!",
+  "agreedToTerms": true
+}
+
+### Test 3: Signup - Invalid Email Format (Should Fail)
+POST {{baseUrl}}/api/auth/signup
+Content-Type: {{contentType}}
+
+{
+  "firstName": "Test",
+  "lastName": "User",
+  "email": "invalid-email",
+  "industry": "healthcare",
+  "password": "Password123!",
+  "agreedToTerms": true
+}
+
+### Test 4: Signup - Short Password (Should Fail)
+POST {{baseUrl}}/api/auth/signup
+Content-Type: {{contentType}}
+
+{
+  "firstName": "Test",
+  "lastName": "User",
+  "email": "test@example.com",
+  "industry": "agriculture",
+  "password": "Pass1!",
+  "agreedToTerms": true
+}
+
+### Test 5: Signup - Terms Not Agreed (Should Fail)
+POST {{baseUrl}}/api/auth/signup
+Content-Type: {{contentType}}
+
+{
+  "firstName": "Test",
+  "lastName": "User",
+  "email": "test@example.com",
+  "industry": "pharmaceutical",
+  "password": "Password123!",
+  "agreedToTerms": false
+}
+
+### Test 6: Login - Valid Credentials
+POST {{baseUrl}}/api/auth/login
+Content-Type: {{contentType}}
+
+{
+  "email": "john.doe@example.com",
+  "password": "SecurePass123!"
+}
+
+### Test 7: Login - Invalid Password
+POST {{baseUrl}}/api/auth/login
+Content-Type: {{contentType}}
+
+{
+  "email": "john.doe@example.com",
+  "password": "WrongPassword"
+}
+
+### Test 8: Login - Non-existent User
+POST {{baseUrl}}/api/auth/login
+Content-Type: {{contentType}}
+
+{
+  "email": "nonexistent@example.com",
+  "password": "Password123!"
+}
+
+### Test 9: Get Current User Profile (Replace TOKEN with actual token from login)
+@authToken = YOUR_TOKEN_HERE
+
+GET {{baseUrl}}/api/auth/me
+Authorization: Bearer {{authToken}}
+
+### Test 10: Signup - Different Industries
+POST {{baseUrl}}/api/auth/signup
+Content-Type: {{contentType}}
+
+{
+  "firstName": "Alice",
+  "lastName": "Johnson",
+  "email": "alice@biotech.com",
+  "company": "BioTech Inc",
+  "industry": "biotechnology",
+  "password": "BioTech123!",
+  "agreedToTerms": true
+}
+
+###
+POST {{baseUrl}}/api/auth/signup
+Content-Type: {{contentType}}
+
+{
+  "firstName": "Bob",
+  "lastName": "Smith",
+  "email": "bob@healthcare.com",
+  "industry": "healthcare",
+  "password": "HealthCare123!",
+  "agreedToTerms": true
+}
+
+###
+POST {{baseUrl}}/api/auth/signup
+Content-Type: {{contentType}}
+
+{
+  "firstName": "Charlie",
+  "lastName": "Wilson",
+  "email": "charlie@agri.com",
+  "company": "AgriCorp",
+  "industry": "agriculture",
+  "password": "Agriculture123!",
+  "agreedToTerms": true
+}

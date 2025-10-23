@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="2000" height="500" viewBox="0 0 2000 500" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Main Logo Symbol Group -->
+  <g transform="translate(300, 100)">
+    <!-- Hourglass Frame -->
+    <path d="M30 20 
+             C30 20, 110 20, 110 20
+             S110 50, 110 60
+             C110 95, 70 105, 70 120
+             C70 135, 110 145, 110 180
+             S110 210, 110 220
+             C110 220, 30 220, 30 220
+             S30 210, 30 180
+             C30 145, 70 135, 70 120
+             C70 105, 30 95, 30 60
+             S30 20, 30 20
+             Z" 
+          stroke="#FFFFFF" 
+          stroke-width="2.5" 
+          fill="none"/>
+
+    <!-- Upper Chamber -->
+    <path d="M35 25
+             C35 25, 105 25, 105 25
+             S105 50, 105 60
+             C105 90, 70 100, 70 120
+             C70 100, 35 90, 35 60
+             S35 25, 35 25
+             Z" 
+          fill="#FFFFFF" 
+          opacity="0.1">
+      <animate attributeName="opacity"
+               values="0.1;0.05;0.1"
+               dur="2s"
+               repeatCount="indefinite"/>
+    </path>
+
+    <!-- Lower Chamber -->
+    <path d="M35 180
+             C35 150, 70 140, 70 120
+             C70 140, 105 150, 105 180
+             S105 215, 105 215
+             L35 215
+             S35 210, 35 180
+             Z" 
+          fill="#FFFFFF" 
+          opacity="0.2"/>
+
+    <!-- Center Pinch Point -->
+    <circle cx="70" cy="120" r="3" fill="#FFFFFF"/>
+
+    <!-- Falling Particles -->
+    <g id="particles">
+      <!-- Main stream with curved path -->
+      <circle r="2" fill="#FFB627">
+        <animateMotion path="M70 60 C70 85, 70 100, 70 120" 
+                       dur="1s" 
+                       begin="0s"
+                       repeatCount="indefinite"/>
+      </circle>
+      <circle r="2" fill="#FFB627">
+        <animateMotion path="M70 60 C70 85, 70 100, 70 120" 
+                       dur="1s" 
+                       begin="0.2s"
+                       repeatCount="indefinite"/>
+      </circle>
+      <circle r="2" fill="#FFB627">
+        <animateMotion path="M70 60 C70 85, 70 100, 70 120" 
+                       dur="1s" 
+                       begin="0.4s"
+                       repeatCount="indefinite"/>
+      </circle>
+
+      <!-- Lower stream with curved path -->
+      <circle r="2" fill="#FFB627">
+        <animateMotion path="M70 120 C70 140, 70 160, 70 180" 
+                       dur="1s" 
+                       begin="0s"
+                       repeatCount="indefinite"/>
+      </circle>
+      <circle r="2" fill="#FFB627">
+        <animateMotion path="M70 120 C70 140, 70 160, 70 180" 
+                       dur="1s" 
+                       begin="0.2s"
+                       repeatCount="indefinite"/>
+      </circle>
+      <circle r="2" fill="#FFB627">
+        <animateMotion path="M70 120 C70 140, 70 160, 70 180" 
+                       dur="1s" 
+                       begin="0.4s"
+                       repeatCount="indefinite"/>
+      </circle>
+      
+      <!-- Accumulating sand with smoother curve -->
+      <path d="M35 215 
+               Q70 185 105 215" 
+            fill="#FFB627" 
+            opacity="0.9">
+        <animate attributeName="d"
+                 values="M35 215 Q70 215 105 215;M35 215 Q70 185 105 215;M35 215 Q70 215 105 215"
+                 dur="2s"
+                 repeatCount="indefinite"/>
+      </path>
+    </g>
+
+    <!-- Decorative Circuit Lines -->
+    <g stroke="#FFFFFF" stroke-width="1" opacity="0.3">
+      <line x1="20" y1="20" x2="0" y2="20">
+        <animate attributeName="opacity"
+                 values="0.3;0.6;0.3"
+                 dur="3s"
+                 repeatCount="indefinite"/>
+      </line>
+      <line x1="120" y1="20" x2="140" y2="20">
+        <animate attributeName="opacity"
+                 values="0.3;0.6;0.3"
+                 dur="3s"
+                 begin="1s"
+                 repeatCount="indefinite"/>
+      </line>
+      <line x1="70" y1="230" x2="70" y2="250">
+        <animate attributeName="opacity"
+                 values="0.3;0.6;0.3"
+                 dur="3s"
+                 begin="2s"
+                 repeatCount="indefinite"/>
+      </line>
+    </g>
+
+    <!-- Glow Effects -->
+    <g filter="url(#glow)">
+      <circle cx="70" cy="60" r="4" fill="#FFB627" opacity="0.6">
+        <animate attributeName="opacity"
+                 values="0.6;0.9;0.6"
+                 dur="2s"
+                 repeatCount="indefinite"/>
+      </circle>
+      <circle cx="70" cy="180" r="4" fill="#FFB627" opacity="0.6">
+        <animate attributeName="opacity"
+                 values="0.6;0.9;0.6"
+                 dur="2s"
+                 begin="1s"
+                 repeatCount="indefinite"/>
+      </circle>
+    </g>
+  </g>
+
+  <!-- Filters -->
+  <defs>
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Company Name with Modern Typography -->
+  <g transform="translate(500, 225)">
+    <!-- SILICO part -->
+    <text x="0" y="0" 
+          font-family="Inter, system-ui, sans-serif" 
+          font-weight="700" 
+          font-size="104" 
+          fill="#FFFFFF">
+      SILICO
+    </text>
+    <!-- INFORMATICS part -->
+    <text x="340" y="0" 
+          font-family="Inter, system-ui, sans-serif" 
+          font-weight="600" 
+          font-size="104" 
+          fill="#3B82F6">
+      INFORMATICS
+    </text>
+    
+    <!-- Tagline -->
+    <text x="2" y="50" 
+          font-family="Inter, system-ui, sans-serif" 
+          font-weight="500" 
+          font-size="24" 
+          letter-spacing="3" 
+          fill="#FFB627">
+      ACCELERATING DIGITAL TRANSFORMATION
+    </text>
+  </g>
+</svg>
