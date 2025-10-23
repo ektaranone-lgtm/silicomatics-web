@@ -7,7 +7,7 @@ import vueDevTools from 'vite-plugin-vue-devtools'
 // https://vite.dev/config/
 export default defineConfig({
   // GitHub Pages requires the repo name in the base path
-  base: process.env.NODE_ENV === 'production' ? '/silicomatics-frontend/' : '/',
+  base: process.env.NODE_ENV === 'production' ? '/silicomatics-web/' : '/',
   plugins: [
     vue(),
     vueDevTools(),
