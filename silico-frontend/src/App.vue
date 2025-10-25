@@ -1,6 +1,6 @@
 <script setup>
 import { ref, onMounted, onUnmounted } from 'vue'
-import logoUrl from '/logo_32_32.png?url'
+import logoUrl from '/logo_full.png?url'
 
 const isDropdownOpen = ref(false)
 const dropdownRef = ref(null)
@@ -79,14 +79,14 @@ onUnmounted(() => {
 .brand {
   display: flex;
   align-items: center;
-  width: 400px; /* Fixed width container for the logo */
+  width: 64px; /* Fixed width container for the logo */
   overflow: visible;
 }
 
 .brand img {
   height: auto;
-  width: 100%;
-  transform: scale(1.6) translateY(2px); /* Make the logo 50% larger and adjust vertical alignment */
+  width: auto;
+  transform: scale(6) translateX(30%) translateY(2px); /* Make the logo 50% larger and adjust vertical alignment */
   transform-origin: center;
 }
 
