@@ -9,7 +9,6 @@
         <p class="hero-subtitle">Your trusted partner in data analytics and digital transformation</p>
         <div class="hero-description">
           <p>Empowering businesses through innovative AI solutions and measurable results</p>
-          <router-link to="/login" class="cta-button">Get Started</router-link>
         </div>
       </div>
     </section>
@@ -160,7 +159,7 @@ const detailsText = computed(() => {
   left: 0;
   right: 0;
   bottom: 0;
-  background: url(/logo_32_32.png) no-repeat center right -200px;
+  background: url(/logo-modern-v7.svg) no-repeat center right -200px;
   opacity: 0.08;
   transform: scale(2);
 }
