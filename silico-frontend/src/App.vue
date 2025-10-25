@@ -1,6 +1,6 @@
 <script setup>
 import { ref, onMounted, onUnmounted } from 'vue'
-import logoUrl from '/logo-modern-v7.svg?url'
+import logoUrl from '/logo_32_32.png?url'
 
 const isDropdownOpen = ref(false)
 const dropdownRef = ref(null)

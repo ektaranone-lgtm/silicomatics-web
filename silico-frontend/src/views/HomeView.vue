@@ -160,7 +160,7 @@ const detailsText = computed(() => {
   left: 0;
   right: 0;
   bottom: 0;
-  background: url(/logo-modern-v7.svg) no-repeat center right -200px;
+  background: url(/logo_32_32.png) no-repeat center right -200px;
   opacity: 0.08;
   transform: scale(2);
 }
