@@ -51,7 +51,7 @@ onUnmounted(() => {
               <li><router-link to="/contact">Contact</router-link></li>
               <li><router-link to="/about">About</router-link></li>
             </ul>
-            <router-link to="/login" class="cta-button">GET STARTED</router-link>
+            <router-link to="/splash" class="cta-button">GET STARTED</router-link>
           </div>
         </div>
       </div>
