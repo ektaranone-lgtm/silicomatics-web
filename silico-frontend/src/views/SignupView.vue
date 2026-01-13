@@ -245,12 +245,12 @@ const handleSignup = async () => {
 }
 
 .signup-card {
-  background: rgba(20, 20, 30, 0.8);
+  background: var(--color-dark-bg-20);
   backdrop-filter: blur(10px);
   border-radius: 16px;
   padding: 3rem;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-  border: 1px solid rgba(255, 182, 39, 0.1);
+  border: 1px solid var(--color-primary-alpha-10);
   animation: fadeInUp 0.6s ease-out;
 }
 
@@ -260,14 +260,14 @@ const handleSignup = async () => {
 }
 
 .signup-header h1 {
-  color: #FFB627;
+  color: var(--color-primary);
   font-size: 2rem;
   font-weight: 600;
   margin-bottom: 0.5rem;
 }
 
 .signup-header p {
-  color: rgba(255, 255, 255, 0.7);
+  color: var(--color-white-alpha-70);
   font-size: 1rem;
   margin: 0;
 }
@@ -302,7 +302,7 @@ const handleSignup = async () => {
   border-radius: 8px;
   border: 1px solid rgba(255, 255, 255, 0.1);
   background: rgba(255, 255, 255, 0.05);
-  color: #ffffff;
+  color: var(--color-white);
   font-size: 1rem;
   transition: all 0.3s ease;
 }
@@ -313,15 +313,15 @@ const handleSignup = async () => {
 
 .form-group select option {
   background: #1a1a2e;
-  color: #ffffff;
+  color: var(--color-white);
 }
 
 .form-group input:not([type="checkbox"]):focus,
 .form-group select:focus {
   outline: none;
-  border-color: #FFB627;
+  border-color: var(--color-primary);
   background: rgba(255, 255, 255, 0.08);
-  box-shadow: 0 0 0 3px rgba(255, 182, 39, 0.1);
+  box-shadow: 0 0 0 3px var(--color-primary-alpha-10);
 }
 
 .form-group input::placeholder {
@@ -362,17 +362,17 @@ const handleSignup = async () => {
 }
 
 .checkbox-box:hover {
-  border-color: #FFB627;
-  background: rgba(255, 182, 39, 0.1);
+  border-color: var(--color-primary);
+  background: var(--color-primary-alpha-10);
 }
 
 .checkbox-box.checked {
-  background: linear-gradient(135deg, #FFB627, #B47D00);
-  border-color: #FFB627;
+  background: linear-gradient(135deg, var(--color-primary), var(--color-primary-dark));
+  border-color: var(--color-primary);
 }
 
 .checkbox-box svg {
-  color: #1E40AF;
+  color: var(--color-secondary-dark);
   animation: checkmark 0.3s ease;
 }
 
@@ -397,7 +397,7 @@ const handleSignup = async () => {
 }
 
 .checkbox-text .link {
-  color: #FFB627;
+  color: var(--color-primary);
   text-decoration: none;
   transition: opacity 0.2s ease;
 }
@@ -431,8 +431,8 @@ const handleSignup = async () => {
   padding: 1rem;
   border-radius: 8px;
   border: none;
-  background: linear-gradient(135deg, #FFB627, #B47D00);
-  color: #1E40AF;
+  background: linear-gradient(135deg, var(--color-primary), var(--color-primary-dark));
+  color: var(--color-secondary-dark);
   font-size: 1rem;
   font-weight: 600;
   cursor: pointer;
@@ -442,7 +442,7 @@ const handleSignup = async () => {
 
 .signup-button:hover:not(:disabled) {
   transform: translateY(-2px);
-  box-shadow: 0 8px 16px rgba(255, 182, 39, 0.3);
+  box-shadow: 0 8px 16px var(--color-primary-alpha-40);
 }
 
 .signup-button:active:not(:disabled) {
@@ -468,7 +468,7 @@ const handleSignup = async () => {
 }
 
 .login-link {
-  color: #FFB627;
+  color: var(--color-primary);
   text-decoration: none;
   font-weight: 600;
   transition: opacity 0.2s ease;

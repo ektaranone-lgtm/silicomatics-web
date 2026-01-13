@@ -18,13 +18,13 @@
 }
 
 .email-link {
-  color: #3B82F6;
+  color: var(--color-secondary);
   text-decoration: none;
   transition: color 0.2s ease;
 }
 
 .email-link:hover {
-  color: #2563EB;
+  color: var(--color-secondary-dark);
   text-decoration: underline;
 }
 </style>
