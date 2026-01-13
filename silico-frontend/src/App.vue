@@ -1,9 +1,19 @@
 <script setup>
+import { ref } from 'vue'
 import logoUrl from '/logos/silico-logo-full-color.png?url'
 import SettingsDropdown from '@/components/SettingsDropdown.vue'
 import { useAnimation } from '@/composables/useAnimation'
 
 const { animationState } = useAnimation()
+const mobileMenuOpen = ref(false)
+
+const toggleMobileMenu = () => {
+  mobileMenuOpen.value = !mobileMenuOpen.value
+}
+
+const closeMobileMenu = () => {
+  mobileMenuOpen.value = false
+}
 </script>
 
 <template>
@@ -25,14 +35,38 @@ const { animationState } = useAnimation()
             </ul>
             <SettingsDropdown />
             <router-link to="/splash" class="cta-button">GET STARTED</router-link>
+            <button class="hamburger" @click="toggleMobileMenu" aria-label="Toggle menu">
+              <span></span>
+              <span></span>
+              <span></span>
+            </button>
           </div>
         </div>
       </div>
     </nav>
 
+    <!-- Mobile Menu Overlay -->
+    <div v-if="mobileMenuOpen" class="mobile-menu-overlay" @click="closeMobileMenu"></div>
+
+    <!-- Mobile Menu Drawer -->
+    <div class="mobile-menu" :class="{ 'open': mobileMenuOpen }">
+      <ul class="mobile-nav-links">
+        <li><router-link to="/services" @click="closeMobileMenu">Services & Products</router-link></li>
+        <li><router-link to="/contact" @click="closeMobileMenu">Contact</router-link></li>
+        <li><router-link to="/about" @click="closeMobileMenu">About</router-link></li>
+        <li><router-link to="/splash" class="mobile-cta" @click="closeMobileMenu">GET STARTED</router-link></li>
+      </ul>
+    </div>
+
     <main class="container">
       <router-view></router-view>
     </main>
+
+    <footer>
+      <div class="container">
+        <p>&copy; 2026 Silicoinformatics</p>
+      </div>
+    </footer>
   </div>
 </template>
 
@@ -236,6 +270,175 @@ main.container {
   position: relative;
   z-index: 10;
   padding-top: calc(73px + 2rem);
+}
+
+footer {
+  position: relative;
+  z-index: 10;
+  padding: 2rem 0;
+  margin-top: 4rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+footer p {
+  text-align: center;
+  color: var(--color-white);
+  opacity: 0.3;
+  font-size: 0.85rem;
+  margin: 0;
+  letter-spacing: 0.5px;
+}
+
+/* Hamburger Menu Button */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 28px;
+  height: 24px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  z-index: 1001;
+}
+
+.hamburger span {
+  width: 100%;
+  height: 3px;
+  background: var(--color-white);
+  border-radius: 3px;
+  transition: all 0.3s ease;
+}
+
+.hamburger:hover span {
+  background: var(--color-primary);
+}
+
+/* Mobile Menu Overlay */
+.mobile-menu-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+  backdrop-filter: blur(2px);
+}
+
+/* Mobile Menu Drawer */
+.mobile-menu {
+  position: fixed;
+  top: 0;
+  right: -100%;
+  width: 280px;
+  height: 100%;
+  background: var(--color-navy-alpha-90);
+  backdrop-filter: blur(10px);
+  z-index: 1000;
+  transition: right 0.3s ease;
+  padding-top: 80px;
+  box-shadow: -4px 0 12px rgba(0, 0, 0, 0.3);
+}
+
+.mobile-menu.open {
+  right: 0;
+}
+
+.mobile-nav-links {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.mobile-nav-links li {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.mobile-nav-links a {
+  display: block;
+  color: var(--color-white);
+  text-decoration: none;
+  padding: 1.2rem 2rem;
+  font-weight: 500;
+  font-size: 1rem;
+  letter-spacing: 0.5px;
+  transition: all 0.2s ease;
+}
+
+.mobile-nav-links a:hover {
+  background: rgba(255, 255, 255, 0.05);
+  padding-left: 2.5rem;
+}
+
+.mobile-nav-links .mobile-cta {
+  background: var(--color-primary);
+  color: var(--color-secondary-dark);
+  font-weight: 600;
+  margin: 1.5rem;
+  border-radius: 50px;
+  text-align: center;
+  padding: 1rem 2rem;
+}
+
+.mobile-nav-links .mobile-cta:hover {
+  background: var(--color-white);
+  padding-left: 2rem;
+}
+
+/* Mobile Responsive Styles */
+@media (max-width: 768px) {
+  .container {
+    padding: 0 1rem;
+  }
+
+  .brand img {
+    height: 40px;
+  }
+
+  .nav-right {
+    gap: 1rem;
+  }
+
+  .nav-links {
+    display: none;
+  }
+
+  .cta-button {
+    display: none;
+  }
+
+  .hamburger {
+    display: flex;
+  }
+
+  .mobile-menu-overlay {
+    display: block;
+  }
+
+  main.container {
+    padding-top: calc(57px + 1.5rem);
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 0 0.75rem;
+  }
+
+  .brand img {
+    height: 32px;
+  }
+
+  .nav-right {
+    gap: 0.5rem;
+  }
+
+  .mobile-menu {
+    width: 250px;
+  }
 }
 </style>
 
