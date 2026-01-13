@@ -341,6 +341,8 @@ footer p {
   transition: right 0.3s ease;
   padding-top: 80px;
   box-shadow: -4px 0 12px rgba(0, 0, 0, 0.3);
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 
 .mobile-menu.open {
@@ -354,6 +356,7 @@ footer p {
 }
 
 .mobile-nav-links li {
+  list-style: none;
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
