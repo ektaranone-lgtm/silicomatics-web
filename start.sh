@@ -6,6 +6,40 @@
 echo "🚀 Starting SilicoInformatics Full Stack Application"
 echo "================================================"
 
+# Check and install backend dependencies
+echo "Checking backend dependencies..."
+if [ ! -d "backend/node_modules" ]; then
+    echo "📦 Installing backend dependencies..."
+    cd backend
+    npm install
+    cd ..
+    echo "✅ Backend dependencies installed"
+else
+    echo "✅ Backend dependencies already installed"
+fi
+
+# Check and install frontend dependencies
+echo "Checking frontend dependencies..."
+if [ ! -d "silico-frontend/node_modules" ]; then
+    echo "📦 Installing frontend dependencies..."
+    # Check if pnpm is installed
+    if command -v pnpm &> /dev/null; then
+        cd silico-frontend
+        pnpm install
+        cd ..
+    else
+        echo "⚠️  pnpm not found. Installing with npm instead..."
+        cd silico-frontend
+        npm install
+        cd ..
+    fi
+    echo "✅ Frontend dependencies installed"
+else
+    echo "✅ Frontend dependencies already installed"
+fi
+
+echo ""
+
 # Check if MongoDB is running
 echo "Checking MongoDB connection..."
 if command -v mongosh &> /dev/null; then

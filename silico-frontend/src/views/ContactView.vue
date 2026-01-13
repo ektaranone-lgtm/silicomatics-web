@@ -2,7 +2,7 @@
   <div class="contact">
     <h1>Contact Us</h1>
     <div class="contact-content">
-      <p>Get in touch with our team by emailing us at: <a href="mailto:silicoinformatics@gmail.com" class="email-link">silicoinformatics@gmail.com</a></p>
+      <p>Get in touch with our team by emailing us at: <a href="mailto:contact@silicoinformatics.com" class="email-link">contact@silicoinformatics.com</a></p>
       <!-- Contact form can be added here -->
     </div>
   </div>
@@ -18,13 +18,13 @@
 }
 
 .email-link {
-  color: #3B82F6;
+  color: var(--color-secondary);
   text-decoration: none;
   transition: color 0.2s ease;
 }
 
 .email-link:hover {
-  color: #2563EB;
+  color: var(--color-secondary-dark);
   text-decoration: underline;
 }
 </style>

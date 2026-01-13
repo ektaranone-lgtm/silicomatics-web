@@ -135,12 +135,12 @@ const handleLogin = async () => {
 }
 
 .login-card {
-  background: rgba(20, 20, 30, 0.8);
+  background: var(--color-dark-bg-20);
   backdrop-filter: blur(10px);
   border-radius: 16px;
   padding: 3rem;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-  border: 1px solid rgba(255, 182, 39, 0.1);
+  border: 1px solid var(--color-primary-alpha-10);
   animation: fadeInUp 0.6s ease-out;
 }
 
@@ -150,14 +150,14 @@ const handleLogin = async () => {
 }
 
 .login-header h1 {
-  color: #FFB627;
+  color: var(--color-primary);
   font-size: 2rem;
   font-weight: 600;
   margin-bottom: 0.5rem;
 }
 
 .login-header p {
-  color: rgba(255, 255, 255, 0.7);
+  color: var(--color-white-alpha-70);
   font-size: 1rem;
   margin: 0;
 }
@@ -185,16 +185,16 @@ const handleLogin = async () => {
   border-radius: 8px;
   border: 1px solid rgba(255, 255, 255, 0.1);
   background: rgba(255, 255, 255, 0.05);
-  color: #ffffff;
+  color: var(--color-white);
   font-size: 1rem;
   transition: all 0.3s ease;
 }
 
 .form-group input:focus {
   outline: none;
-  border-color: #FFB627;
+  border-color: var(--color-primary);
   background: rgba(255, 255, 255, 0.08);
-  box-shadow: 0 0 0 3px rgba(255, 182, 39, 0.1);
+  box-shadow: 0 0 0 3px var(--color-primary-alpha-10);
 }
 
 .form-group input::placeholder {
@@ -221,11 +221,11 @@ const handleLogin = async () => {
   cursor: pointer;
   width: 16px;
   height: 16px;
-  accent-color: #FFB627;
+  accent-color: var(--color-primary);
 }
 
 .forgot-password {
-  color: #FFB627;
+  color: var(--color-primary);
   text-decoration: none;
   font-size: 0.9rem;
   transition: opacity 0.2s ease;
@@ -259,8 +259,8 @@ const handleLogin = async () => {
   padding: 1rem;
   border-radius: 8px;
   border: none;
-  background: linear-gradient(135deg, #FFB627, #B47D00);
-  color: #1E40AF;
+  background: linear-gradient(135deg, var(--color-primary), var(--color-primary-dark));
+  color: var(--color-secondary-dark);
   font-size: 1rem;
   font-weight: 600;
   cursor: pointer;
@@ -270,7 +270,7 @@ const handleLogin = async () => {
 
 .login-button:hover:not(:disabled) {
   transform: translateY(-2px);
-  box-shadow: 0 8px 16px rgba(255, 182, 39, 0.3);
+  box-shadow: 0 8px 16px var(--color-primary-alpha-40);
 }
 
 .login-button:active:not(:disabled) {
@@ -296,7 +296,7 @@ const handleLogin = async () => {
 }
 
 .signup-link {
-  color: #FFB627;
+  color: var(--color-primary);
   text-decoration: none;
   font-weight: 600;
   transition: opacity 0.2s ease;

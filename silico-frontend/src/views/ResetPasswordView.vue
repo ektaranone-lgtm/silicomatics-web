@@ -298,7 +298,7 @@ const handleResetPassword = async () => {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: var(--gradient-brand);
   padding: 20px;
 }
 
@@ -343,8 +343,8 @@ const handleResetPassword = async () => {
   width: 50px;
   height: 50px;
   margin: 0 auto 20px;
-  border: 4px solid #f3f3f3;
-  border-top: 4px solid #667eea;
+  border: 4px solid var(--color-gray-100);
+  border-top: 4px solid var(--color-secondary);
   border-radius: 50%;
   animation: spin 1s linear infinite;
 }
@@ -370,7 +370,7 @@ const handleResetPassword = async () => {
 }
 
 .error-icon svg {
-  color: #dc3545;
+  color: var(--color-error);
 }
 
 .error-text {
@@ -388,8 +388,8 @@ const handleResetPassword = async () => {
 
 .request-new-link {
   display: inline-block;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  color: white;
+  background: var(--gradient-brand);
+  color: var(--color-white);
   padding: 12px 30px;
   border-radius: 8px;
   text-decoration: none;
@@ -412,13 +412,13 @@ const handleResetPassword = async () => {
 }
 
 .success-icon svg {
-  color: #28a745;
+  color: var(--color-success);
 }
 
 .success-text {
   font-size: 22px;
   font-weight: 600;
-  color: #28a745;
+  color: var(--color-success);
   margin: 10px 0;
 }
 
@@ -430,8 +430,8 @@ const handleResetPassword = async () => {
 
 .signin-button {
   display: inline-block;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  color: white;
+  background: var(--gradient-brand);
+  color: var(--color-white);
   padding: 12px 40px;
   border-radius: 8px;
   text-decoration: none;
@@ -466,7 +466,7 @@ const handleResetPassword = async () => {
 .user-email {
   font-size: 16px;
   font-weight: 600;
-  color: #667eea;
+  color: var(--color-secondary);
   margin: 0;
 }
 
@@ -498,8 +498,8 @@ const handleResetPassword = async () => {
 
 .form-group input:focus {
   outline: none;
-  border-color: #667eea;
-  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+  border-color: var(--color-secondary);
+  box-shadow: 0 0 0 3px var(--color-secondary-alpha-10);
 }
 
 .toggle-password {
@@ -519,7 +519,7 @@ const handleResetPassword = async () => {
 }
 
 .toggle-password:hover {
-  color: #667eea;
+  color: var(--color-secondary);
 }
 
 .password-strength {
@@ -543,15 +543,15 @@ const handleResetPassword = async () => {
 }
 
 .strength-fill.weak {
-  background: #dc3545;
+  background: var(--color-error);
 }
 
 .strength-fill.good {
-  background: #ffc107;
+  background: var(--color-warning);
 }
 
 .strength-fill.strong {
-  background: #28a745;
+  background: var(--color-success);
 }
 
 .strength-label {
@@ -561,15 +561,15 @@ const handleResetPassword = async () => {
 }
 
 .strength-label.weak {
-  color: #dc3545;
+  color: var(--color-error);
 }
 
 .strength-label.good {
-  color: #ffc107;
+  color: var(--color-warning);
 }
 
 .strength-label.strong {
-  color: #28a745;
+  color: var(--color-success);
 }
 
 .password-requirements {
@@ -602,7 +602,7 @@ const handleResetPassword = async () => {
 }
 
 .password-requirements li.valid {
-  color: #28a745;
+  color: var(--color-success);
 }
 
 .check-icon {
@@ -619,7 +619,7 @@ const handleResetPassword = async () => {
 }
 
 .password-requirements li.valid .check-icon {
-  background: #28a745;
+  background: var(--color-success);
 }
 
 .error-message {
@@ -635,8 +635,8 @@ const handleResetPassword = async () => {
 .reset-button {
   width: 100%;
   padding: 14px;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  color: white;
+  background: var(--gradient-brand);
+  color: var(--color-white);
   border: none;
   border-radius: 8px;
   font-size: 16px;
@@ -663,7 +663,7 @@ const handleResetPassword = async () => {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  color: #667eea;
+  color: var(--color-secondary);
   text-decoration: none;
   font-size: 14px;
   font-weight: 500;

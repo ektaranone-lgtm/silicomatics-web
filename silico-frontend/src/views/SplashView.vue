@@ -100,12 +100,12 @@
   font-weight: 700;
   background: linear-gradient(90deg,
     rgba(255, 255, 255, 0.95),
-    rgba(255, 182, 39, 0.85)
+    var(--color-primary-alpha-85)
   );
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
-  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  text-shadow: 0 2px 8px var(--color-black-alpha-10);
 }
 
 .splash-subtitle {
@@ -123,8 +123,8 @@
 }
 
 .feature-card {
-  background: linear-gradient(135deg, rgba(255, 182, 39, 0.1), rgba(180, 125, 0, 0.05));
-  border: 1px solid rgba(255, 182, 39, 0.2);
+  background: linear-gradient(135deg, var(--color-primary-alpha-10), var(--color-border-shadow));
+  border: 1px solid var(--color-primary-alpha-20);
   border-radius: 12px;
   padding: 2rem;
   transition: all 0.3s ease;
@@ -132,12 +132,12 @@
 
 .feature-card:hover {
   transform: translateY(-8px);
-  box-shadow: 0 8px 24px rgba(255, 182, 39, 0.2);
-  border-color: rgba(255, 182, 39, 0.4);
+  box-shadow: 0 8px 24px var(--color-primary-alpha-20);
+  border-color: var(--color-primary-alpha-40);
 }
 
 .feature-icon {
-  background: linear-gradient(135deg, #FFB627, #B47D00);
+  background: linear-gradient(135deg, var(--color-primary), var(--color-primary-dark));
   width: 70px;
   height: 70px;
   border-radius: 50%;
@@ -150,11 +150,11 @@
 
 .feature-icon i {
   font-size: 1.8rem;
-  color: #FFFAF0;
+  color: var(--color-cream);
 }
 
 .feature-card h3 {
-  color: #FFB627;
+  color: var(--color-primary);
   margin-bottom: 1rem;
   font-size: 1.3rem;
   font-weight: 600;
@@ -171,7 +171,7 @@
 }
 
 .message-box {
-  background: linear-gradient(135deg, rgba(30, 40, 60, 0.8), rgba(20, 20, 30, 0.8));
+  background: linear-gradient(135deg, rgba(30, 40, 60, 0.8), var(--color-dark-bg-20));
   border: 2px solid rgba(255, 182, 39, 0.3);
   border-radius: 16px;
   padding: 3rem 2rem;
@@ -182,12 +182,12 @@
 
 .message-icon {
   font-size: 3rem;
-  color: #FFB627;
+  color: var(--color-primary);
   margin-bottom: 1.5rem;
 }
 
 .message-box h2 {
-  color: #FFB627;
+  color: var(--color-primary);
   margin-bottom: 1rem;
   font-size: 2rem;
   font-weight: 600;
@@ -221,26 +221,26 @@
 }
 
 .primary-button {
-  background: #FFB627;
-  color: #1E40AF;
+  background: var(--color-primary);
+  color: var(--color-secondary-dark);
 }
 
 .primary-button:hover {
-  background: #FFFFFF;
+  background: var(--color-white);
   transform: translateY(-2px);
   box-shadow: 0 6px 16px rgba(255, 182, 39, 0.3);
 }
 
 .secondary-button {
   background: transparent;
-  color: #FFB627;
-  border: 2px solid #FFB627;
+  color: var(--color-primary);
+  border: 2px solid var(--color-primary);
 }
 
 .secondary-button:hover {
-  background: rgba(255, 182, 39, 0.1);
+  background: var(--color-primary-alpha-10);
   transform: translateY(-2px);
-  box-shadow: 0 6px 16px rgba(255, 182, 39, 0.2);
+  box-shadow: 0 6px 16px var(--color-primary-alpha-20);
 }
 
 @keyframes fadeInDown {
