@@ -282,11 +282,16 @@ footer {
 
 footer p {
   text-align: center;
-  color: var(--color-white);
-  opacity: 0.3;
+  color: rgba(0, 0, 0, 0.4);
   font-size: 0.85rem;
   margin: 0;
   letter-spacing: 0.5px;
+}
+
+@media (prefers-color-scheme: dark) {
+  footer p {
+    color: rgba(255, 255, 255, 0.3);
+  }
 }
 
 /* Hamburger Menu Button */
