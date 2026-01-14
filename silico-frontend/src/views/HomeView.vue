@@ -2,6 +2,7 @@
   <div class="home">
     <section class="hero">
       <video
+        ref="heroVideo"
         class="hero-background-video"
         autoplay
         loop
@@ -140,7 +141,17 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed } from 'vue'
+import { ref, computed, onMounted } from 'vue'
+
+// Reference to the hero video element
+const heroVideo = ref<HTMLVideoElement | null>(null)
+
+// Set video playback speed to 0.5x (half speed) when component mounts
+onMounted(() => {
+  if (heroVideo.value) {
+    heroVideo.value.playbackRate = 0.5
+  }
+})
 
 // currently selected industry key or null
 const selected = ref<string | null>(null)
