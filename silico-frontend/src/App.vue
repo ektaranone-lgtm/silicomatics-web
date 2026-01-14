@@ -277,21 +277,16 @@ footer {
   z-index: 10;
   padding: 2rem 0;
   margin-top: 4rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  border-top: 1px solid var(--color-border-light);
 }
 
 footer p {
   text-align: center;
-  color: rgba(0, 0, 0, 0.4);
+  color: var(--color-text-secondary);
+  opacity: 0.6;
   font-size: 0.85rem;
   margin: 0;
   letter-spacing: 0.5px;
-}
-
-@media (prefers-color-scheme: dark) {
-  footer p {
-    color: rgba(255, 255, 255, 0.3);
-  }
 }
 
 /* Hamburger Menu Button */
