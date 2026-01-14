@@ -90,7 +90,7 @@
 .title-line {
   font-size: 1.5rem;
   font-weight: 300;
-  color: rgba(255, 255, 255, 0.7);
+  color: var(--color-text-secondary);
   letter-spacing: 2px;
   text-transform: uppercase;
 }
@@ -98,10 +98,7 @@
 .title-highlight {
   font-size: 3.5rem;
   font-weight: 700;
-  background: linear-gradient(90deg,
-    rgba(255, 255, 255, 0.95),
-    var(--color-primary-alpha-85)
-  );
+  background: var(--gradient-company-name);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -110,7 +107,8 @@
 
 .splash-subtitle {
   font-size: 1.3rem;
-  color: rgba(255, 255, 255, 0.8);
+  color: var(--color-text-primary);
+  opacity: 0.8;
   font-weight: 400;
 }
 
@@ -123,17 +121,18 @@
 }
 
 .feature-card {
-  background: linear-gradient(135deg, var(--color-primary-alpha-10), var(--color-border-shadow));
-  border: 1px solid var(--color-primary-alpha-20);
+  background: var(--color-cream);
+  border: 1px solid var(--color-border-light);
   border-radius: 12px;
   padding: 2rem;
   transition: all 0.3s ease;
+  box-shadow: 0 2px 8px var(--color-black-alpha-10);
 }
 
 .feature-card:hover {
   transform: translateY(-8px);
-  box-shadow: 0 8px 24px var(--color-primary-alpha-20);
-  border-color: var(--color-primary-alpha-40);
+  box-shadow: 0 8px 24px var(--color-border-shadow-hover);
+  border-color: var(--color-border-medium);
 }
 
 .feature-icon {
@@ -145,12 +144,12 @@
   align-items: center;
   justify-content: center;
   margin: 0 auto 1.5rem;
-  box-shadow: 0 4px 12px rgba(180, 125, 0, 0.3);
+  box-shadow: 0 4px 12px var(--color-border-shadow-hover);
 }
 
 .feature-icon i {
   font-size: 1.8rem;
-  color: var(--color-cream);
+  color: var(--color-secondary-dark);
 }
 
 .feature-card h3 {
@@ -161,7 +160,8 @@
 }
 
 .feature-card p {
-  color: rgba(255, 255, 255, 0.7);
+  color: var(--color-text-primary);
+  opacity: 0.8;
   line-height: 1.6;
   font-size: 1rem;
 }
@@ -171,13 +171,13 @@
 }
 
 .message-box {
-  background: linear-gradient(135deg, rgba(30, 40, 60, 0.8), var(--color-dark-bg-20));
-  border: 2px solid rgba(255, 182, 39, 0.3);
+  background: var(--color-cream);
+  border: 2px solid var(--color-primary-alpha-40);
   border-radius: 16px;
   padding: 3rem 2rem;
   max-width: 800px;
   margin: 0 auto;
-  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 16px var(--color-black-alpha-10);
 }
 
 .message-icon {
@@ -194,7 +194,8 @@
 }
 
 .message-box p {
-  color: rgba(255, 255, 255, 0.8);
+  color: var(--color-text-primary);
+  opacity: 0.9;
   font-size: 1.1rem;
   line-height: 1.8;
   margin-bottom: 2rem;
@@ -228,7 +229,7 @@
 .primary-button:hover {
   background: var(--color-white);
   transform: translateY(-2px);
-  box-shadow: 0 6px 16px rgba(255, 182, 39, 0.3);
+  box-shadow: 0 6px 16px var(--color-primary-alpha-40);
 }
 
 .secondary-button {
