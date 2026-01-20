@@ -25,6 +25,9 @@ const closeMobileMenu = () => {
           <div class="brand">
             <router-link to="/" aria-label="Go to home page">
               <img :src="logoUrl" alt="Silico Informatics Logo" />
+              <span class="brand-text">
+                <span class="brand-silico">Silico</span><span class="brand-informatics">Informatics</span>
+              </span>
             </router-link>
           </div>
           <div class="nav-right">
@@ -104,6 +107,46 @@ const closeMobileMenu = () => {
 
 .brand a:hover img {
   filter: drop-shadow(0 0 16px rgba(255, 213, 79, 0.5)) drop-shadow(0 0 24px rgba(30, 144, 255, 0.35));
+}
+
+.brand-text {
+  margin-left: 1rem;
+  font-size: 1.5rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  display: flex;
+}
+
+.brand-silico {
+  color: #FFD97F;
+  text-shadow:
+    0 0 10px rgba(255, 213, 79, 0.5),
+    0 0 20px rgba(255, 213, 79, 0.3),
+    0 0 30px rgba(255, 213, 79, 0.15);
+  transition: text-shadow 0.3s ease;
+}
+
+.brand-informatics {
+  color: #5EB3FF;
+  text-shadow:
+    0 0 10px rgba(30, 144, 255, 0.5),
+    0 0 20px rgba(30, 144, 255, 0.3),
+    0 0 30px rgba(30, 144, 255, 0.15);
+  transition: text-shadow 0.3s ease;
+}
+
+.brand a:hover .brand-silico {
+  text-shadow:
+    0 0 15px rgba(255, 213, 79, 0.7),
+    0 0 25px rgba(255, 213, 79, 0.4),
+    0 0 35px rgba(255, 213, 79, 0.2);
+}
+
+.brand a:hover .brand-informatics {
+  text-shadow:
+    0 0 15px rgba(30, 144, 255, 0.7),
+    0 0 25px rgba(30, 144, 255, 0.4),
+    0 0 35px rgba(30, 144, 255, 0.2);
 }
 
 .nav-right {
@@ -401,6 +444,11 @@ footer p {
     height: 40px;
   }
 
+  .brand-text {
+    font-size: 1.1rem;
+    margin-left: 0.75rem;
+  }
+
   .nav-right {
     gap: 1rem;
   }
@@ -433,6 +481,10 @@ footer p {
 
   .brand img {
     height: 32px;
+  }
+
+  .brand-text {
+    display: none;
   }
 
   .nav-right {
