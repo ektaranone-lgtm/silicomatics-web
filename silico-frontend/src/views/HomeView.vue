@@ -358,17 +358,54 @@ function onPointerLeave() {
 .hero {
   display: grid;
   grid-template-columns: 1.05fr 1.25fr;
-  gap: 2rem;
+  gap: 6rem;
   align-items: center;
   padding: 4rem 2rem 6rem;
   max-width: 1160px;
   margin: 0 auto;
+  position: relative;
+}
+
+/* Modern corner bracket border effect */
+.hero::before,
+.hero::after {
+  content: '';
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  border: 2px solid rgba(25, 118, 210, 0.3);
+  pointer-events: none;
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+
+.hero::before {
+  top: -2px;
+  left: -2px;
+  border-right: none;
+  border-bottom: none;
+  border-top-left-radius: 6px;
+}
+
+.hero::after {
+  bottom: -2px;
+  right: -2px;
+  border-left: none;
+  border-top: none;
+  border-bottom-right-radius: 6px;
+}
+
+/* Dark mode - golden brackets */
+[data-theme="dark"] .hero::before,
+[data-theme="dark"] .hero::after {
+  border-color: rgba(255, 219, 88, 0.35);
 }
 
 .hero-text {
   display: flex;
   flex-direction: column;
   gap: 1rem;
+  position: relative;
 }
 
 .hero-title {
@@ -462,8 +499,8 @@ function onPointerLeave() {
   isolation: isolate;
 }
 
-/* Add soft edge fade overlay */
-.video-card::after {
+/* Add soft edge fade overlay - moved to a separate pseudo-element layer */
+.video-frame::after {
   content: '';
   position: absolute;
   inset: 0;
@@ -493,8 +530,8 @@ function onPointerLeave() {
   border-radius: 22px;
 }
 
-/* Overlay gradient */
-.video-card::before {
+/* Overlay gradient - moved to video-frame */
+.video-frame::before {
   content: '';
   position: absolute;
   inset: 0;
