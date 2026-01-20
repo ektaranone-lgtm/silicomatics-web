@@ -93,7 +93,7 @@
   --gradient-brand: linear-gradient(135deg, var(--color-navy), var(--color-secondary));
   --gradient-navy: linear-gradient(180deg, var(--color-navy), var(--color-navy-light));
   --gradient-hero: linear-gradient(135deg, var(--color-dark-bg-10), var(--color-dark-bg-30));
-  --gradient-company-name: linear-gradient(90deg, rgba(255, 255, 255, 0.95), var(--color-primary-alpha-85));
+  --gradient-company-name: linear-gradient(135deg, #0056b3, #0099ff);
 
   /* Background defaults (light mode) */
   --color-bg-primary: #FFFEF8;
@@ -170,7 +170,7 @@
   /* Adjusted gradients for dark mode */
   --gradient-brand: linear-gradient(135deg, var(--color-navy-light), var(--color-secondary));
   --gradient-hero: linear-gradient(135deg, var(--color-dark-bg-10), var(--color-dark-bg-30));
-  --gradient-company-name: linear-gradient(90deg, rgba(255, 255, 255, 0.95), var(--color-primary-alpha-85));
+  --gradient-company-name: linear-gradient(135deg, #ffd700, #ffed4e);
 
   /* Sand particle colors (dark mode - lighter particles on navy bg) */
   --color-sand-primary: rgba(255, 219, 88, 0.5);

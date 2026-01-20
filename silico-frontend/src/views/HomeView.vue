@@ -1,28 +1,37 @@
 <template>
   <div class="home">
     <section class="hero">
-      <video
-        ref="heroVideo"
-        class="hero-background-video"
-        autoplay
-        loop
-        muted
-        playsinline
-      >
-        <source src="/logos/humanoid-logo-animated.mp4" type="video/mp4">
-      </video>
-      <div class="hero-content">
-        <div class="hero-main">
-          <h1 class="hero-title">
-            <span class="welcome-text">Welcome to</span>
-            <span class="company-name">SilicoInformatics</span>
-          </h1>
-          <p class="hero-tagline">Empowering businesses through innovative AI solutions and measurable results.</p>
+      <div class="hero-text">
+        <h1 class="hero-title">
+          <span class="welcome-text">Welcome to</span>
+          <span class="company-name">SilicoInformatics</span>
+        </h1>
+        <p class="hero-tagline">Empowering businesses through innovative AI solutions and measurable results.</p>
+      </div>
+
+      <div ref="videoContainer" class="video-card">
+        <div class="video-frame">
+          <video
+            ref="heroVideo"
+            autoplay
+            loop
+            muted
+            playsinline
+            preload="metadata"
+          >
+            <source src="/logos/humanoid-logo-animated.mp4" type="video/mp4">
+          </video>
         </div>
-        <div class="hero-bullets">
-          <p>Turn Data into <em>Knowledge & Insights</em></p>
-          <p>Insights into <em>Actions</em></p>
-          <p>Action into <em>Outcomes</em></p>
+
+        <div class="video-footer">
+          <div class="marquee" aria-hidden="true">
+            <div ref="captionLine" class="caption-line">
+              We Give Multi-Faceted Attention to <span class="highlight">Your Business</span><span class="spacer"> -|- </span>
+              Turn Data into <span class="highlight">Knowledge &amp; Insights</span><span class="spacer"> -|- </span>
+              Insights into <span class="highlight">Actions</span><span class="spacer"> -|- </span>
+              Action into <span class="highlight">Outcomes</span>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -143,13 +152,53 @@
 <script setup lang="ts">
 import { ref, computed, onMounted } from 'vue'
 
-// Reference to the hero video element
+// Reference to the hero video element and caption
 const heroVideo = ref<HTMLVideoElement | null>(null)
+const videoContainer = ref<HTMLElement | null>(null)
+const captionLine = ref<HTMLElement | null>(null)
 
-// Set video playback speed to 0.5x (half speed) when component mounts
+// Set video playback speed and setup caption animation when component mounts
 onMounted(() => {
   if (heroVideo.value) {
-    heroVideo.value.playbackRate = 0.5
+    heroVideo.value.playbackRate = 0.8
+
+    const setupCaptionAnimation = () => {
+      const video = heroVideo.value
+      const container = videoContainer.value
+      const caption = captionLine.value
+
+      if (!video || !container || !caption) return
+
+      requestAnimationFrame(() => {
+        const frameW = container.getBoundingClientRect().width
+        const captionW = Math.ceil(caption.scrollWidth || caption.getBoundingClientRect().width)
+
+        const duration = 36 // duration for full scroll
+        caption.style.setProperty('--start', frameW + 'px')
+        caption.style.setProperty('--end', -(captionW + 8) + 'px')
+        caption.style.animationDuration = duration + 's'
+        caption.style.animationDelay = '0s'
+      })
+    }
+
+    // Setup animation when video is ready
+    if (heroVideo.value.readyState >= 1) {
+      setupCaptionAnimation()
+    } else {
+      heroVideo.value.addEventListener('loadedmetadata', setupCaptionAnimation, { once: true })
+    }
+
+    // Restart animation on video loop
+    let prevTime = 0
+    heroVideo.value.addEventListener('timeupdate', () => {
+      if (heroVideo.value) {
+        const ct = heroVideo.value.currentTime
+        if (ct < prevTime - 0.2) {
+          setupCaptionAnimation()
+        }
+        prevTime = ct
+      }
+    })
   }
 })
 
@@ -307,171 +356,243 @@ function onPointerLeave() {
 }
 
 .hero {
-  position: relative;
-  background: var(--gradient-hero);
-  color: var(--color-white);
-  padding: 8rem 2rem;
-  margin-top: -2rem;
-  overflow: hidden;
-  backdrop-filter: blur(8px);
-  clip-path: ellipse(100% 100% at 50% 0%);
-}
-
-.hero-background-video {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  min-width: 100%;
-  min-height: 100%;
-  width: auto;
-  height: auto;
-  opacity: 0.15;
-  z-index: 0;
-  object-fit: cover;
-  filter: brightness(0.8) contrast(1.1);
-}
-
-.hero::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: radial-gradient(
-    circle at center,
-    rgba(0, 0, 0, 0) 0%,
-    rgba(0, 0, 0, 0) 60%,
-    rgba(10, 10, 10, 1) 100%
-  );
-  pointer-events: none;
-  z-index: 1;
-}
-
-/* Update hero content z-index to appear above the fade */
-.hero-content {
-  position: relative;
-  z-index: 2;
-  max-width: 1200px;
-  margin: 0 auto;
-  display: flex;
+  display: grid;
+  grid-template-columns: 1.05fr 1.25fr;
+  gap: 2rem;
   align-items: center;
-  justify-content: space-between;
-  gap: 4rem;
+  padding: 4rem 2rem 6rem;
+  max-width: 1160px;
+  margin: 0 auto;
 }
 
-.hero-main {
-  flex: 1;
+.hero-text {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
 }
 
 .hero-title {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
-  margin-bottom: 2rem;
-  animation: fadeInUp 0.8s ease-out;
+  margin: 0 0 1rem;
 }
 
 .welcome-text {
   font-size: 1.5rem;
   font-weight: 300;
-  color: var(--color-white-alpha-70);
+  color: var(--color-brown);
   letter-spacing: 2px;
   text-transform: uppercase;
-  text-shadow: 0 2px 4px var(--color-black-alpha-20);
 }
 
 .company-name {
-  font-size: 4rem;
+  font-size: clamp(2.5rem, 4.2vw, 4rem);
   font-weight: 600;
-  line-height: 1.1;
-  background: var(--gradient-company-name);
+  line-height: 1.08;
+  letter-spacing: -0.02em;
+  background: linear-gradient(135deg, #0047ab, #0066cc, #0099ff);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
-  margin: 0.5rem 0;
-  text-shadow: 0 2px 8px var(--color-black-alpha-10);
+  filter: drop-shadow(0 0 15px rgba(0, 102, 204, 0.25));
 }
 
 .hero-tagline {
-  font-size: 1.2rem;
-  font-weight: 400;
-  line-height: 1.6;
-  color: var(--color-white-alpha-80);
-  margin: 1.5rem 0 0 0;
-  animation: fadeInUp 0.8s ease-out 0.2s backwards;
-  text-shadow: 0 2px 4px var(--color-black-alpha-15);
+  font-size: 1rem;
+  line-height: 1.55;
+  color: var(--color-text-primary);
+  margin: 0 0 1.5rem;
+  max-width: 52ch;
 }
 
 .hero-bullets {
-  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
   margin: 0;
-  flex-shrink: 0;
-  animation: fadeInUp 0.8s ease-out 0.4s backwards;
+  padding: 0;
 }
 
 .hero-bullets p {
-  font-size: 1.1rem;
-  line-height: 2;
-  color: var(--color-secondary);
-  margin: 0.75rem 0;
-  text-shadow: 0 2px 4px var(--color-black-alpha-20);
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--color-text-primary);
+  margin: 0.5rem 0;
 }
 
 .hero-bullets p em {
   font-style: normal;
   font-weight: 600;
-  color: var(--color-primary);
+  color: var(--color-secondary);
 }
 
-.cta-button {
-  display: inline-block;
-  background: var(--color-primary);
-  color: var(--color-secondary-dark);
-  padding: 1rem 2rem;
-  border-radius: 50px;
-  font-weight: 600;
-  text-decoration: none;
-  transition: all 0.3s ease;
+/* Dark mode - ensure yellow gradient shows for company name */
+[data-theme="dark"] .company-name {
+  background: linear-gradient(135deg, #ffaa00, #ffe57f, #ffd700);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  filter: drop-shadow(0 0 20px rgba(255, 215, 0, 0.4));
+}
+
+[data-theme="dark"] .welcome-text {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+[data-theme="dark"] .hero-tagline {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+[data-theme="dark"] .hero-bullets p {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+[data-theme="dark"] .hero-bullets p em {
+  color: #ffd700;
+}
+
+/* Video card */
+.video-card {
+  position: relative;
+  border-radius: 22px;
+  background: transparent;
+  border: none;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+/* Add soft edge fade overlay */
+.video-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  border-radius: 22px;
+  box-shadow:
+    inset 0 0 40px 12px rgba(0, 0, 0, 0.6),
+    0 20px 80px rgba(0, 0, 0, 0.3);
+  z-index: 3;
+}
+
+.video-frame {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  background: rgba(0,0,0,0.2);
+  position: relative;
+  border-radius: 22px;
+  overflow: hidden;
+}
+
+.video-frame video {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 22px;
+}
+
+/* Overlay gradient */
+.video-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(700px 320px at 25% 15%, rgba(79,209,255,0.22), transparent 55%),
+    radial-gradient(700px 320px at 85% 0%, rgba(124,92,255,0.20), transparent 60%),
+    linear-gradient(180deg, rgba(0,0,0,0.10), rgba(0,0,0,0.55));
+  mix-blend-mode: screen;
+  opacity: 0.65;
+  z-index: 1;
+  border-radius: 22px;
+}
+
+.video-footer {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 14px;
+  z-index: 2;
+  display: block;
+  padding: 0;
+  border: none;
+  background: transparent;
+  font-size: 16px;
+  color: rgba(255,255,255,0.92);
+  pointer-events: none;
+  overflow: visible;
+}
+
+.marquee {
+  position: relative;
+  width: 100%;
+  height: 56px;
+  overflow: hidden;
+}
+
+.caption-line {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
   white-space: nowrap;
+  font-weight: 700;
+  letter-spacing: -0.015em;
+  color: var(--color-primary);
+  font-size: 18px;
+  will-change: transform, opacity;
+  opacity: 1;
+  padding: 0 8px;
+  transform: translateX(var(--start, 110%)) translateY(-50%);
+  animation-name: slide;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  display: inline-block;
+  backface-visibility: hidden;
+  transform-origin: 0 50%;
 }
 
-.cta-button:hover {
-  background: var(--color-white);
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px var(--color-black-alpha-10);
+.caption-line .highlight {
+  color: #ffd24d;
+  font-weight: 800;
+  margin-left: 8px;
 }
 
-@keyframes fadeInUp {
+.caption-line .spacer {
+  color: #ff4df9;
+  font-weight: 800;
+  margin-left: 8px;
+}
+
+@keyframes slide {
   from {
-    opacity: 0;
-    transform: translateY(20px);
+    transform: translateX(var(--start, 110%)) translateY(-50%);
   }
   to {
-    opacity: 1;
-    transform: translateY(0);
+    transform: translateX(var(--end, -110%)) translateY(-50%);
+  }
+}
+
+@media (max-width: 980px) {
+  .hero {
+    grid-template-columns: 1fr;
+    padding: 3rem 1.5rem 4rem;
+  }
+
+  .hero-tagline {
+    max-width: none;
   }
 }
 
 @media (max-width: 768px) {
   .hero {
-    padding: 4rem 1.5rem;
-    margin-top: -2rem;
+    padding: 2rem 1rem 3rem;
   }
 
   .company-name {
-    font-size: 3rem;
-  }
-
-  .hero-content {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 2rem;
-  }
-
-  .hero-bullets {
-    width: 100%;
+    font-size: 2.5rem;
   }
 }
 
