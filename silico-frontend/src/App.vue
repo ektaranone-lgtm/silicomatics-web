@@ -248,54 +248,62 @@ const closeMobileMenu = () => {
 .background-layer.animation-on::after {
   content: '';
   position: absolute;
-  top: -100%;
+  top: -100vh;
   left: 0;
   width: 100%;
-  height: 200%;
+  height: 300vh;
   background-image:
-    radial-gradient(circle, var(--color-sand-primary) 1px, transparent 1px),
-    radial-gradient(circle, var(--color-sand-secondary) 2px, transparent 2px),
-    radial-gradient(circle, var(--color-sand-tertiary) 1px, transparent 1px),
-    radial-gradient(circle, var(--color-sand-primary) 2px, transparent 2px),
-    radial-gradient(circle, var(--color-sand-secondary) 1px, transparent 1px),
-    radial-gradient(circle, var(--color-sand-tertiary) 1px, transparent 1px),
-    radial-gradient(circle, var(--color-sand-primary) 2px, transparent 2px),
-    radial-gradient(circle, var(--color-sand-secondary) 1px, transparent 1px);
+    radial-gradient(circle at 10% 20%, var(--color-sand-primary) 1px, transparent 1px),
+    radial-gradient(circle at 30% 10%, var(--color-sand-secondary) 2px, transparent 2px),
+    radial-gradient(circle at 50% 30%, var(--color-sand-tertiary) 1px, transparent 1px),
+    radial-gradient(circle at 70% 15%, var(--color-sand-primary) 2px, transparent 2px),
+    radial-gradient(circle at 20% 50%, var(--color-sand-secondary) 1px, transparent 1px),
+    radial-gradient(circle at 40% 70%, var(--color-sand-tertiary) 1px, transparent 1px),
+    radial-gradient(circle at 60% 45%, var(--color-sand-primary) 2px, transparent 2px),
+    radial-gradient(circle at 80% 60%, var(--color-sand-secondary) 1px, transparent 1px),
+    radial-gradient(circle at 15% 80%, var(--color-sand-tertiary) 1px, transparent 1px),
+    radial-gradient(circle at 35% 90%, var(--color-sand-primary) 1px, transparent 1px),
+    radial-gradient(circle at 55% 85%, var(--color-sand-secondary) 2px, transparent 2px),
+    radial-gradient(circle at 75% 75%, var(--color-sand-tertiary) 1px, transparent 1px),
+    radial-gradient(circle at 90% 25%, var(--color-sand-primary) 1px, transparent 1px),
+    radial-gradient(circle at 25% 40%, var(--color-sand-secondary) 1px, transparent 1px),
+    radial-gradient(circle at 45% 55%, var(--color-sand-tertiary) 2px, transparent 2px),
+    radial-gradient(circle at 65% 65%, var(--color-sand-primary) 1px, transparent 1px);
   background-size:
-    200px 300px,
-    300px 400px,
-    150px 250px,
-    250px 350px,
-    180px 280px,
-    220px 320px,
-    280px 380px,
-    160px 260px;
-  background-position:
-    0 0,
-    50px 60px,
-    100px 30px,
-    150px 80px,
-    200px 20px,
-    250px 90px,
-    300px 40px,
-    350px 70px;
+    180px 180px,
+    240px 240px,
+    160px 160px,
+    200px 200px,
+    220px 220px,
+    190px 190px,
+    210px 210px,
+    170px 170px,
+    230px 230px,
+    195px 195px,
+    215px 215px,
+    185px 185px,
+    205px 205px,
+    175px 175px,
+    225px 225px,
+    165px 165px;
   background-repeat: repeat;
-  animation: sandFall 20s linear infinite;
+  animation: sandFall 30s linear infinite;
   opacity: 1;
+  will-change: transform;
 }
 
 .background-layer.animation-on::after {
-  animation-duration: 25s;
-  animation-delay: -10s;
-  opacity: 0.8;
+  animation-duration: 40s;
+  animation-delay: -20s;
+  opacity: 0.7;
 }
 
 @keyframes sandFall {
-  from {
+  0% {
     transform: translateY(0);
   }
-  to {
-    transform: translateY(100%);
+  100% {
+    transform: translateY(100vh);
   }
 }
 
