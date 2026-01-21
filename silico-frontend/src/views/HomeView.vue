@@ -366,41 +366,6 @@ function onPointerLeave() {
   position: relative;
 }
 
-/* Modern corner bracket border effect */
-.hero::before,
-.hero::after {
-  content: '';
-  position: absolute;
-  width: 40px;
-  height: 40px;
-  border: 2px solid rgba(25, 118, 210, 0.3);
-  pointer-events: none;
-  border-radius: 2px;
-  transition: all 0.3s ease;
-}
-
-.hero::before {
-  top: -2px;
-  left: -2px;
-  border-right: none;
-  border-bottom: none;
-  border-top-left-radius: 6px;
-}
-
-.hero::after {
-  bottom: -2px;
-  right: -2px;
-  border-left: none;
-  border-top: none;
-  border-bottom-right-radius: 6px;
-}
-
-/* Dark mode - golden brackets */
-[data-theme="dark"] .hero::before,
-[data-theme="dark"] .hero::after {
-  border-color: rgba(255, 219, 88, 0.35);
-}
-
 .hero-text {
   display: flex;
   flex-direction: column;
